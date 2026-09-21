@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile — Soft Palette</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+
+  /* 🎨 SOFT PALETTE
+     #FDF6F0  cream
+     #F8E1E7  soft pink
+     #E3D5F3  lavender
+     #CDE7F0  baby blue
+     #D6F0E0  mint
+     #7A6C91  muted purple (text utama)
+     #A89BB8  muted purple (text sekunder)
+  */
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #FDF6F0 0%, #E3D5F3 50%, #CDE7F0 100%);
+    padding: 20px;
+  }
+
+  .card {
+    background: #FFFDFB;
+    width: 100%;
+    max-width: 380px;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(122, 108, 145, 0.15);
+    overflow: hidden;
+    text-align: center;
+    animation: fadeUp 0.6s ease;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* banner lembut multi-pastel */
+  .banner {
+    height: 110px;
+    background: linear-gradient(135deg,
+      #F8E1E7 0%,
+      #E3D5F3 40%,
+      #CDE7F0 70%,
+      #D6F0E0 100%);
+  }
+
+  .avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 4px solid #FFFDFB;
+    object-fit: cover;
+    margin-top: -55px;
+    background: #F8E1E7;
+    box-shadow: 0 6px 18px rgba(122, 108, 145, 0.12);
+  }
+
+  .name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #7A6C91;
+    margin-top: 12px;
+  }
+
+  .role {
+    font-size: 13px;
+    color: #A89BB8;
+    margin-top: 4px;
+  }
+
+  .bio {
+    font-size: 13.5px;
+    color: #8E82A3;
+    line-height: 1.6;
+    padding: 14px 26px 0;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 18px 0;
+    margin-top: 18px;
+    border-top: 1px solid #F3EDF7;
+    border-bottom: 1px solid #F3EDF7;
+  }
+
+  .stat h3 {
+    font-size: 17px;
+    color: #7A6C91;
+    font-weight: 700;
+  }
+  .stat p {
+    font-size: 11px;
+    color: #B5A8C4;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-top: 2px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+    padding: 18px 24px;
+  }
+
+  .btn {
+    flex: 1;
+    padding: 11px 0;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  /* tombol lembut */
+  .btn-primary {
+    background: linear-gradient(135deg, #E3D5F3, #CDE7F0);
+    color: #6B5C82;
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(163, 145, 190, 0.3);
+  }
+
+  .btn-outline {
+    background: #FBF5F8;
+    color: #8E82A3;
+    border: 1px solid #F0E7F5;
+  }
+  .btn-outline:hover {
+    background: #F5EAF3;
+  }
+
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding-bottom: 22px;
+  }
+
+  .socials a {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #FBF5F8;
+    color: #A89BB8;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.25s;
+  }
+  .socials a:hover {
+    background: #E3D5F3;
+    color: #6B5C82;
+    transform: translateY(-2px);
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="banner"></div>
+
+    <img
+      class="avatar"
+      src="https://ui-avatars.com/api/?name=Nama+Kamu&background=E3D5F3&color=7A6C91&size=200"
+      alt="Avatar"
+    >
+
+    <h2 class="name">Capcay</h2>
+    <p class="role">coba-coba · Sidoarjo</p>
+
+    <p class="bio">
+      Suka belajar, coklat, dan hal-hal baru.
+    </p>
+
+    <div class="stats">
+      <div class="stat"><h3>128</h3><p>Post</p></div>
+      <div class="stat"><h3>2.4k</h3><p>Follower</p></div>
+      <div class="stat"><h3>312</h3><p>Following</p></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="followMe(this)">Follow</button>
+      <a href="#" class="btn btn-outline">Message</a>
+    </div>
+
+    <div class="socials">
+      <a href="#" title="GitHub">cahyafitri</a>
+      <a href="#" title="Twitter">twitter</a>
+      <a href="#" title="Instagram">IG</a>
+      <a href="#" title="LinkedIn">IN</a>
+    </div>
+  </div>
+
+  <script>
+    function followMe(btn) {
+      if (btn.dataset.following === "1") {
+        btn.dataset.following = "0";
+        btn.textContent = "Follow";
+      } else {
+        btn.dataset.following = "1";
+        btn.textContent = "Following ✓";
+      }
+    }
+  </script>
+
+</body>
+</html>
