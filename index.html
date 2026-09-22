@@ -9,6 +9,7 @@
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
 
+    /* Aurora Background */
     .aurora-bg {
       background: linear-gradient(135deg, #fef3ff 0%, #e0f2fe 25%, #dcfce7 50%, #fef9c3 75%, #ffe4e6 100%);
       background-size: 300% 300%;
@@ -20,6 +21,7 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* Gradient Text */
     .gradient-text {
       background: linear-gradient(135deg, #818cf8 0%, #c084fc 35%, #f472b6 65%, #fb923c 100%);
       -webkit-background-clip: text;
@@ -27,6 +29,7 @@
       background-clip: text;
     }
 
+    /* Floating Animations */
     @keyframes float-slow {
       0%, 100% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-20px) scale(1.05); }
@@ -35,6 +38,7 @@
     .float-slower { animation: float-slow 12s ease-in-out infinite; }
     .float-bob { animation: float-slow 4s ease-in-out infinite; }
 
+    /* Pulse Ring */
     @keyframes pulse-ring {
       0% { transform: scale(0.9); opacity: 0.7; }
       70% { transform: scale(1.4); opacity: 0; }
@@ -49,9 +53,11 @@
       animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
 
+    /* Card Hover */
     .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
     .card-hover:hover { transform: translateY(-6px); }
 
+    /* Shine Badge */
     @keyframes shine {
       0% { background-position: -200% center; }
       100% { background-position: 200% center; }
@@ -62,6 +68,7 @@
       animation: shine 4s linear infinite;
     }
 
+    /* Bounce In */
     @keyframes bounce-in {
       0% { opacity: 0; transform: translateY(30px) scale(0.95); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
@@ -71,6 +78,47 @@
     .bounce-in-delay-2 { animation-delay: 0.3s; }
     .bounce-in-delay-3 { animation-delay: 0.45s; }
     .bounce-in-delay-4 { animation-delay: 0.6s; }
+
+    /* NEW: Gradient Border Animation */
+    @keyframes border-glow {
+      0%, 100% { border-color: rgba(192, 132, 252, 0.5); box-shadow: 0 0 20px rgba(192, 132, 252, 0.2); }
+      50% { border-color: rgba(244, 114, 182, 0.8); box-shadow: 0 0 40px rgba(244, 114, 182, 0.4); }
+    }
+    .border-glow {
+      animation: border-glow 3s ease-in-out infinite;
+    }
+
+    /* NEW: Text Gradient Animation */
+    @keyframes text-shimmer {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    .text-shimmer {
+      background: linear-gradient(90deg, #818cf8, #c084fc, #f472b6, #fb923c, #818cf8);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: text-shimmer 6s linear infinite;
+    }
+
+    /* NEW: Particle float */
+    @keyframes particle-float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+      50% { opacity: 0.8; }
+      100% { transform: translateY(-100px) rotate(360deg); opacity: 0.3; }
+    }
+    .particle {
+      animation: particle-float 10s linear infinite;
+    }
+
+    /* NEW: Hover scale for tech badges */
+    .tech-badge {
+      transition: all 0.3s ease;
+    }
+    .tech-badge:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
   </style>
 </head>
 <body class="aurora-bg text-slate-700 min-h-screen flex flex-col justify-between selection:bg-fuchsia-300 selection:text-fuchsia-900 relative overflow-x-hidden">
@@ -89,14 +137,19 @@
   <div class="absolute top-96 left-1/4 text-2xl opacity-30 float-slow pointer-events-none hidden lg:block">🌈</div>
   <div class="absolute bottom-64 right-8 text-2xl opacity-40 float-slower pointer-events-none hidden md:block">🎈</div>
 
+  <!-- NEW: Particle dots -->
+  <div class="absolute top-20 left-1/3 w-2 h-2 bg-fuchsia-400 rounded-full particle pointer-events-none opacity-30"></div>
+  <div class="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-cyan-400 rounded-full particle pointer-events-none opacity-30" style="animation-delay: 2s;"></div>
+  <div class="absolute bottom-1/3 left-1/2 w-2 h-2 bg-amber-400 rounded-full particle pointer-events-none opacity-30" style="animation-delay: 4s;"></div>
+  <div class="absolute top-2/3 right-1/3 w-1.5 h-1.5 bg-emerald-400 rounded-full particle pointer-events-none opacity-30" style="animation-delay: 6s;"></div>
+
   <!-- Navbar -->
   <header class="max-w-6xl w-full mx-auto px-6 py-8 flex items-center justify-between relative z-10">
     <div class="flex items-center space-x-3">
-      <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-fuchsia-400 via-pink-400 to-orange-300 flex items-center justify-center shadow-lg shadow-fuchsia-300/50 font-bold text-lg text-white">
+      <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-fuchsia-400 via-pink-400 to-orange-300 flex items-center justify-center shadow-lg shadow-fuchsia-300/50 font-bold text-lg text-white border-glow">
         2
       </div>
       <div>
-       
         <p class="text-xs text-slate-500">Halaman Statis • Nginx • Docker</p>
       </div>
     </div>
@@ -118,20 +171,15 @@
         </div>
         <!-- Welcome / Celebration illustration -->
         <svg class="w-40 h-40 md:w-48 md:h-48 relative z-10 drop-shadow-[0_20px_40px_rgba(192,132,252,0.35)]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Sun rays -->
           <circle cx="100" cy="80" r="55" fill="url(#glow)" opacity="0.5"/>
-          <!-- Central circle -->
           <circle cx="100" cy="90" r="45" fill="url(#centerGrad)" stroke="#c084fc" stroke-width="2"/>
-          <!-- Smiley face -->
           <circle cx="85" cy="82" r="4" fill="#7c3aed"/>
           <circle cx="115" cy="82" r="4" fill="#7c3aed"/>
           <path d="M 82 100 Q 100 118 118 100" stroke="#7c3aed" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <!-- Sparkles around -->
           <path d="M 40 50 L 42 56 L 48 58 L 42 60 L 40 66 L 38 60 L 32 58 L 38 56 Z" fill="#f472b6"/>
           <path d="M 160 60 L 162 66 L 168 68 L 162 70 L 160 76 L 158 70 L 152 68 L 158 66 Z" fill="#fbbf24"/>
           <path d="M 155 130 L 157 136 L 163 138 L 157 140 L 155 146 L 153 140 L 147 138 L 153 136 Z" fill="#34d399"/>
           <path d="M 45 140 L 47 146 L 53 148 L 47 150 L 45 156 L 43 150 L 37 148 L 43 146 Z" fill="#60a5fa"/>
-          <!-- Hand wave -->
           <path d="M 145 75 Q 155 65 160 75" stroke="#f472b6" stroke-width="3" fill="none" stroke-linecap="round"/>
           <defs>
             <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
@@ -163,13 +211,12 @@
     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-fuchsia-200 text-slate-600 text-xs mb-6 backdrop-blur-md shadow-md shadow-fuchsia-100 shine-badge bounce-in bounce-in-delay-1">
       <span class="text-fuchsia-500 font-semibold">🌟 Portal 2</span>
       <span class="text-slate-300">|</span>
-      <!-- <span>Halaman statis siap digunakan</span> -->
     </div>
 
-    <!-- Title -->
-    <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-800 mb-6 leading-tight bounce-in bounce-in-delay-2">
-      Selamat Datang <br>
-      <!-- <span class="gradient-text">Web Portal 2!</span> -->
+    <!-- Title with shimmer effect -->
+    <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight bounce-in bounce-in-delay-2">
+      <span class="text-slate-800">Selamat Datang</span> <br>
+      <span class="text-shimmer">Web Portal 2!</span>
     </h2>
 
     <p class="text-slate-600 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed bounce-in bounce-in-delay-3">
@@ -222,24 +269,21 @@
       <a href="profile.html" class="group px-6 py-3 rounded-full bg-gradient-to-r from-fuchsia-400 via-pink-400 to-orange-300 text-white font-semibold text-sm shadow-lg shadow-fuchsia-300/50 hover:shadow-xl hover:shadow-fuchsia-400/60 hover:scale-105 transition-all duration-300">
         🏠 Kembali ke Portal
       </a>
-      <!-- <a href="http://100.78.2.65:8000" target="_blank" class="px-6 py-3 rounded-full bg-white/80 border-2 border-violet-200 text-violet-600 font-semibold text-sm shadow-md hover:shadow-lg hover:border-violet-400 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
-        🚀 Buka Laravel App
-      </a> -->
     </div>
 
     <!-- Tech Stack Strip -->
     <div class="mt-12 flex flex-wrap justify-center items-center gap-3">
       <span class="text-xs text-slate-500 font-semibold mr-1">Dibangun dengan:</span>
-      <div class="flex items-center gap-1.5 bg-white/70 border border-violet-200 px-3 py-1.5 rounded-full text-xs text-slate-700 shadow-sm">
+      <div class="tech-badge flex items-center gap-1.5 bg-white/70 border border-violet-200 px-3 py-1.5 rounded-full text-xs text-slate-700 shadow-sm cursor-default">
         <span>🐳</span><span class="font-medium">Docker</span>
       </div>
-      <div class="flex items-center gap-1.5 bg-white/70 border border-sky-200 px-3 py-1.5 rounded-full text-xs text-slate-700 shadow-sm">
+      <div class="tech-badge flex items-center gap-1.5 bg-white/70 border border-sky-200 px-3 py-1.5 rounded-full text-xs text-slate-700 shadow-sm cursor-default">
         <span>🌐</span><span class="font-medium">Nginx</span>
       </div>
-      <div class="flex items-center gap-1.5 bg-white/70 border border-amber-200 px-3 py-1.5 rounded-full text-xs text-slate-700 shadow-sm">
+      <div class="tech-badge flex items-center gap-1.5 bg-white/70 border border-amber-200 px-3 py-1.5 rounded-full text-xs text-slate-700 shadow-sm cursor-default">
         <span>🎨</span><span class="font-medium">Tailwind</span>
       </div>
-      <div class="flex items-center gap-1.5 bg-white/70 border border-emerald-200 px-3 py-1.5 rounded-full text-xs text-slate-700 shadow-sm">
+      <div class="tech-badge flex items-center gap-1.5 bg-white/70 border border-emerald-200 px-3 py-1.5 rounded-full text-xs text-slate-700 shadow-sm cursor-default">
         <span>🐧</span><span class="font-medium">Ubuntu</span>
       </div>
     </div>
